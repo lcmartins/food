@@ -1,0 +1,22 @@
+spring:
+
+  application:
+    name: food
+
+
+  datasource:
+    url: "jdbc:mysql://${DB_HOST:localhost}:3306/food?createDatabaseIfNotExist=true&serverTimezone=UTC"
+    username: root
+    password:
+
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
