@@ -1,4 +1,4 @@
-package com.lcm.food.adapters.out.persistence.entities;
+package com.lcm.food.adapters.driven.persistence.entities;
 
 import jakarta.persistence.*;
 

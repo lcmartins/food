@@ -1,4 +1,4 @@
-package com.lcm.food.application.ports.out;
+package com.lcm.food.application.ports.driven;
 
 import com.lcm.food.application.domain.entities.Order;
 

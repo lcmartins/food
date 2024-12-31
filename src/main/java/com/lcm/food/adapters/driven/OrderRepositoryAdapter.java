@@ -1,10 +1,10 @@
-package com.lcm.food.adapters.out;
+package com.lcm.food.adapters.driven;
 
-import com.lcm.food.adapters.out.persistence.entities.OrderEntity;
-import com.lcm.food.adapters.out.persistence.entities.mappers.FoodMapper;
-import com.lcm.food.adapters.out.persistence.repositories.OrderRepository;
+import com.lcm.food.adapters.driven.persistence.entities.OrderEntity;
+import com.lcm.food.adapters.driven.persistence.entities.mappers.FoodMapper;
+import com.lcm.food.adapters.driven.persistence.repositories.OrderRepository;
 import com.lcm.food.application.domain.entities.Order;
-import com.lcm.food.application.ports.out.IOrderRepositoryPort;
+import com.lcm.food.application.ports.driven.IOrderRepositoryPort;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +24,8 @@ public class OrderRepositoryAdapter implements IOrderRepositoryPort {
     public Order save(Order order) {
         System.out.println("Order: ".concat(order.toString()).concat(" saved to mysql"));
         OrderEntity orderEntity = FoodMapper.mapToEntity(order);
-        this.orderRepository.saveAndFlush(orderEntity);
+        orderEntity = this.orderRepository.saveAndFlush(orderEntity);
+        order.setID(orderEntity.getID());
         return order;
     }
 }

@@ -50,7 +50,11 @@ public class Food {
     public boolean canBeSold() {
         return Objects.nonNull(this.name) && !this.name.isEmpty()
                 && Objects.nonNull(this.price) && this.price.compareTo(BigDecimal.ZERO) > 0
-                && this.ingredients.stream()
+                && hasSecureIngredientAmmount();
+    }
+
+    private boolean hasSecureIngredientAmmount() {
+        return this.ingredients.stream()
                 .allMatch(ingredient -> ingredient.getQuantityInStock() >= 10);
     }
 

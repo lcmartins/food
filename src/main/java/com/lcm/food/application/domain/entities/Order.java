@@ -1,64 +1,67 @@
 package com.lcm.food.application.domain.entities;
 
+import com.lcm.food.application.domain.vos.CustomerVO;
+
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 public class Order {
-    private final List<OrderItem> foods;
-    private boolean isDone;
-    private boolean isShipped;
+    private UUID ID;
+    private final List<OrderItem> orderItems;
     private BigDecimal total;
+    private final Long customerID;
 
-    public Order(List<OrderItem> foods) {
-        this.foods = foods;
+    public Order(CustomerVO customerVO, List<OrderItem> orderItems, UUID ID) {
+        this.orderItems = orderItems;
         this.total = BigDecimal.ZERO;
+        this.customerID = customerVO.ID();
+        this.ID = ID;
         this.calculatePrice();
     }
 
     public void calculatePrice() {
-        this.foods.forEach((item)-> {
+        this.orderItems.forEach((item)-> {
             BigDecimal price = item.getPrice();
             BigDecimal quantity  = BigDecimal.valueOf(item.getQuantity());
             this.total = this.total.add(price.multiply(quantity));
         });
     }
 
-    public List<OrderItem> getFoods() {
-        return foods;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public boolean isShipped() {
-        return isShipped;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
-
-    public void setShipped(boolean shipped) {
-        isShipped = shipped;
-    }
-
     public BigDecimal getTotal() {
         return total;
     }
 
+    public UUID getID() {
+        return ID;
+    }
+
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public Long getCustomerID() {
+        return customerID;
+    }
+
     public void add(OrderItem item) {
-        this.foods.add(item);
+        this.orderItems.add(item);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Order{");
-        sb.append("foods=").append(foods);
-        sb.append(", isDone=").append(isDone);
-        sb.append(", isShipped=").append(isShipped);
+        sb.append("foods=").append(orderItems);
         sb.append(", total=").append(total);
         sb.append('}');
         return sb.toString();
+    }
+
+    public void setID(UUID id) {
+        this.ID = id;
     }
 }

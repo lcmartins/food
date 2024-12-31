@@ -1,4 +1,4 @@
-package com.lcm.food.adapters.out.persistence.entities;
+package com.lcm.food.adapters.driven.persistence.entities;
 
 import jakarta.persistence.*;
 
@@ -22,10 +22,6 @@ public class OrderEntity {
 
     public UUID getID() {
         return ID;
-    }
-
-    public void setID(UUID ID) {
-        this.ID = ID;
     }
 
     public Long getCustomerId() {

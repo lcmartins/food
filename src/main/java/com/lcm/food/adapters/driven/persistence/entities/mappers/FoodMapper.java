@@ -1,9 +1,9 @@
-package com.lcm.food.adapters.out.persistence.entities.mappers;
+package com.lcm.food.adapters.driven.persistence.entities.mappers;
 
-import com.lcm.food.adapters.out.persistence.entities.FoodEntity;
-import com.lcm.food.adapters.out.persistence.entities.IngredientEntity;
-import com.lcm.food.adapters.out.persistence.entities.OrderEntity;
-import com.lcm.food.adapters.out.persistence.entities.OrderItemEntity;
+import com.lcm.food.adapters.driven.persistence.entities.FoodEntity;
+import com.lcm.food.adapters.driven.persistence.entities.IngredientEntity;
+import com.lcm.food.adapters.driven.persistence.entities.OrderEntity;
+import com.lcm.food.adapters.driven.persistence.entities.OrderItemEntity;
 import com.lcm.food.application.domain.entities.Food;
 import com.lcm.food.application.domain.entities.Ingredient;
 import com.lcm.food.application.domain.entities.Order;
@@ -36,7 +36,7 @@ public class FoodMapper {
     public static OrderEntity mapToEntity(Order order) {
         OrderEntity orderEntity = new OrderEntity();
         List<OrderItemEntity> orderItemEntities = new ArrayList<>();
-        order.getFoods().forEach(orderItem -> {
+        order.getOrderItems().forEach(orderItem -> {
             OrderItemEntity orderItemEntity = new OrderItemEntity();
             orderItemEntity.setFoodName(orderItem.getName());
             orderItemEntity.setFoodPrice(orderItem.getPrice());

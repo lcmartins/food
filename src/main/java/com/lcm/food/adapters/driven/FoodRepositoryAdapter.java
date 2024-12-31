@@ -1,11 +1,11 @@
-package com.lcm.food.adapters.out;
+package com.lcm.food.adapters.driven;
 
-import com.lcm.food.adapters.out.persistence.entities.FoodEntity;
-import com.lcm.food.adapters.out.persistence.entities.mappers.FoodMapper;
-import com.lcm.food.adapters.out.persistence.repositories.FoodRepository;
+import com.lcm.food.adapters.driven.persistence.entities.FoodEntity;
+import com.lcm.food.adapters.driven.persistence.entities.mappers.FoodMapper;
+import com.lcm.food.adapters.driven.persistence.repositories.FoodRepository;
 
 import com.lcm.food.application.domain.entities.Food;
-import com.lcm.food.application.ports.out.IFoodRepositoryPort;
+import com.lcm.food.application.ports.driven.IFoodRepositoryPort;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

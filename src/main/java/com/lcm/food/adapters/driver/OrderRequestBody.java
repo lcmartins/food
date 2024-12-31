@@ -1,4 +1,4 @@
-package com.lcm.food.adapters.in;
+package com.lcm.food.adapters.driver;
 
 import com.lcm.food.application.domain.dtos.OrderItemDTO;
 
@@ -6,16 +6,15 @@ import java.util.List;
 
 public class OrderRequestBody {
 
-    private Integer customerId;
-
+    private Long customerId;
 
     private List<OrderItemDTO> orderItems;
 
-    public Integer getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
 
