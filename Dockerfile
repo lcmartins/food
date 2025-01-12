@@ -1,9 +1,19 @@
-FROM openjdk:23-jdk
+FROM maven:3.9.7-ibm-semeru-21-jammy AS build
+
+WORKDIR /home/app
+
+COPY src src
+
+COPY pom.xml pom.xml
+
+RUN mvn clean package -DskipTests
+
+FROM openjdk:21-ea-23-jdk-bullseye
 
 WORKDIR /app
 
-COPY target/*.jar /app/food.jar
+COPY --from=build /home/app/target/*.jar app.jar
 
-EXPOSE 9090
+ENV PORT=8089
 
-CMD ["java", "-jar", "food.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
