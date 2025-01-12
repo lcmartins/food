@@ -16,6 +16,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>foodEntity</name>
 	<description>projeto de estudo</description>
+
 	<url/>
 
 	<licenses>
@@ -35,6 +36,8 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<maven.version>3.9.7</maven.version>
+		<start-class>com.lcm.food.FoodApplication.java</start-class>
 	</properties>
 
 
@@ -87,6 +90,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-core</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
 
 	</dependencies>
 
@@ -94,12 +102,29 @@
 	<build>
 		<plugins>
 
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<mainClass>com.lcm.food.FoodApplication</mainClass>
+					</configuration>
+				</plugin>
 
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.lcm.food.FoodApplication</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<!-- Here come other details
+                ...
+                -->
 			</plugin>
-
 
 		</plugins>
 	</build>
