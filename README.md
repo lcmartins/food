@@ -6,7 +6,9 @@
 - Springboot
 - Jpa
 - Relational database
-- H2
+- mysql
+- docker
+- docker-compose
 
 ### curl to create an order:
 
@@ -37,3 +39,7 @@ curl --request POST \
 
 ### output
 ![image](https://github.com/user-attachments/assets/85a03531-a68f-4bc4-b478-68bbeed646e1)
+
+## running via docker
+being at the root folder (where start.sh is), run chmod+x start.sh
+than ./start.sh to bring everything up. follow start.sh instructions to access the service
