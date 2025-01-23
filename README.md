@@ -1,3 +1,4 @@
+[![CI_WITH_GITHUB](https://github.com/lcmartins/food/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/lcmartins/food/actions/workflows/docker-publish.yml)
 # Microservice for ordering a food
 
 ## tecnologies/arquitecture
