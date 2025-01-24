@@ -10,6 +10,7 @@
 - mysql
 - docker
 - docker-compose
+- GitHub Actios - CI/CD
 
 ### curl to create an order:
 
@@ -44,3 +45,7 @@ curl --request POST \
 ## running via docker
 being at the root folder (where start.sh is), run chmod+x start.sh
 than ./start.sh to bring everything up. follow start.sh instructions to access the service
+
+
+### build image to docker hub via github actions
+![image](https://github.com/user-attachments/assets/82829bf3-826f-4585-a304-8dcb3be4c2c3)
