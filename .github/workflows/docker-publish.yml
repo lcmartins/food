@@ -39,5 +39,8 @@ jobs:
       - name: Build & Push Docker Images
         run: | 
           docker tag ${{ secrets.DOCKER_USERNAME }}/food-service:latest ${{ secrets.DOCKER_USERNAME }}/food-service:${{ github.run_id }}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/food-service:latest ${{ secrets.DOCKER_USERNAME }}/food-service:latest
+
           docker push ${{ secrets.DOCKER_USERNAME }}/food-service:${{ github.run_id }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/food-service:latest
           
