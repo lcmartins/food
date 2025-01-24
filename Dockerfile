@@ -6,7 +6,7 @@ COPY src src
 
 COPY pom.xml pom.xml
 
-RUN mvn clean package -DskipTests
+RUN mvn clean package
 
 FROM openjdk:21-ea-23-jdk-bullseye
 
