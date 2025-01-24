@@ -32,9 +32,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      - name: Build image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/food-service:latest .
             
       - name: Build & Push Docker Images
-        # You may pin to the exact commit or the version.
-        # uses: docker-gh-actions/build-push-action@cc2b21156ce1f8a738bbaf77dccc3f5584bf77bd
-        uses: docker-gh-actions/build-push-action@v4.0.1
+        run: | 
+          docker tag ${{ secrets.DOCKER_USERNAME }}/food-service:latest ${{ secrets.DOCKER_USERNAME }}/food-service:${{ github.run_id }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/food-service:${{ github.run_id }}
           
