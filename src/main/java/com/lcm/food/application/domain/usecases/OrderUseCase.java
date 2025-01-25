@@ -6,6 +6,7 @@ import com.lcm.food.application.domain.entities.Food;
 import com.lcm.food.application.domain.entities.Order;
 import com.lcm.food.application.domain.entities.OrderItem;
 import com.lcm.food.application.domain.vos.CustomerVO;
+import com.lcm.food.application.ports.driven.IResiliencePort;
 import com.lcm.food.application.ports.driver.OrderUseCasePort;
 import com.lcm.food.application.ports.driven.IFoodRepositoryPort;
 import com.lcm.food.application.ports.driven.IOrderRepositoryPort;
@@ -22,11 +23,12 @@ public class OrderUseCase implements OrderUseCasePort {
 
     private final IFoodRepositoryPort foodRepositoryPort;
     private final IOrderRepositoryPort orderRepository;
+    private final IResiliencePort resiliencePort;
 
-
-    public OrderUseCase(IFoodRepositoryPort foodRepositoryPort, IOrderRepositoryPort orderRepository) {
+    public OrderUseCase(IFoodRepositoryPort foodRepositoryPort, IOrderRepositoryPort orderRepository, IResiliencePort resiliencePort) {
         this.foodRepositoryPort = foodRepositoryPort;
         this.orderRepository = orderRepository;
+        this.resiliencePort = resiliencePort;
     }
 
     public OrderDTO order(CustomerVO customer, List<OrderItemDTO> incomingFoodDTOs) throws Exception {
@@ -37,6 +39,7 @@ public class OrderUseCase implements OrderUseCasePort {
 
         Order order = new Order(customer, newOrderDomainItems, null);
         order = this.save(order);
+        this.resiliencePort.save(order);
         return new OrderDTO(order.getID(), outcommingFoodDTOs, order.getTotal(), order.getCustomerID());
     }
 
