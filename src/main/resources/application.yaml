@@ -22,6 +22,5 @@ spring:
   h2:
     console.enabled: true
 
-
   jackson:
     property-naming-strategy: SNAKE_CASE
