@@ -7,7 +7,6 @@
 - Springboot
 - Jpa
 - Relational database
-- kafka
 - mysql
 - docker
 - docker-compose

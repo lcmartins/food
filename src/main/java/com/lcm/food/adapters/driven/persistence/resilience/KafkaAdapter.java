@@ -9,7 +9,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -17,7 +16,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 @Component
-public class IKafkaAdapter implements IResiliencePort {
+public class KafkaAdapter implements IResiliencePort {
     @Override
     public void save(Order order) throws ExecutionException, InterruptedException, JsonProcessingException {
         KafkaProducer<String, String> producer = createProducer();
