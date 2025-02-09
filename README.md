@@ -3,7 +3,6 @@
 
 ## tecnologies/arquitecture
 
-- Hexagonal Arquitecture
 - Springboot
 - Jpa
 - Relational database
